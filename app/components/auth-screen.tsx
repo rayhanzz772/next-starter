@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Button, Card, Input, Label } from "@/components/ui";
@@ -11,11 +12,18 @@ type AuthScreenProps = {
 
 export function AuthScreen({ mode }: AuthScreenProps) {
   const isRegister = mode === "register";
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!isRegister) {
+      router.push("/dashboard");
+      return;
+    }
+
     setMessage("Your account form is ready to connect to an auth provider.");
   }
 

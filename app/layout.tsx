@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Morrow | Your workspace, in focus",
   description: "Sign in or create your Morrow account.",
+  icons: {
+    icon: "/assets/logo/logo-dark.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
