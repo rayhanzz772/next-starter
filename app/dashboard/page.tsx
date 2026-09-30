@@ -20,9 +20,11 @@ import {
   Label,
   Textarea,
 } from "@/components/ui";
+import { useRouter } from "next/navigation";
 
 export default function ProjectsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const router = useRouter();
   const [projects, setProjects] = useState<
     { id: number; name: string; description: string }[]
   >([]);
@@ -30,18 +32,7 @@ export default function ProjectsPage() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    const name = String(formData.get("name") ?? "").trim();
-    const description = String(formData.get("description") ?? "").trim();
-
-    if (!name) return;
-
-    setProjects((currentProjects) => [
-      ...currentProjects,
-      { id: Date.now(), name, description },
-    ]);
-    event.currentTarget.reset();
-    setIsDialogOpen(false);
+    router.push("/user");
   }
 
   return (
@@ -90,21 +81,6 @@ export default function ProjectsPage() {
               </form>
             </DialogContent>
           </Dialog>
-
-          {projects.length > 0 && (
-            <ul className="divide-y rounded-md border">
-              {projects.map((project) => (
-                <li key={project.id} className="space-y-1 p-4">
-                  <h2 className="font-medium">{project.name}</h2>
-                  {project.description && (
-                    <p className="text-sm text-muted-foreground">
-                      {project.description}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
         </CardContent>
       </Card>
     </main>
