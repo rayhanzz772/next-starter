@@ -116,12 +116,12 @@ export function AuthScreen({ mode }: AuthScreenProps) {
             >
               {isRegister ? "Create account" : "Sign in"}
             </Button>
-            <p role="status" aria-live="polite" className="min-h-4 text-center text-xs text-muted-foreground">
+            <p role="status" aria-live="polite" className="text-center text-xs text-muted-foreground">
               {message}
             </p>
           </form>
 
-          <p className="mt-2 text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-muted-foreground">
             {isRegister ? "Already have an account? " : "New to Morrow? "}
             <Link
               href={isRegister ? "/login" : "/register"}
