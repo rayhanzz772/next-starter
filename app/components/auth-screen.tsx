@@ -47,7 +47,7 @@ export function AuthScreen({ mode }: AuthScreenProps) {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-6 ">
             {isRegister && (
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
